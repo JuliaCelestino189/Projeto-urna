@@ -19,6 +19,13 @@ const candidates = {
     }
 };
 
+const botao = document.getElementById('1');
+
+botao.addEventListener('click', function(evento) {
+    console.log('O botão foi clicado!');
+});
+
+
 
 let votes = {
     "12": 0,
