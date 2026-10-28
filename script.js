@@ -1,22 +1,19 @@
 const candidates = {
     "14": {
-        name: "Ana Martins",
-        party: "Partido Verde (PV)",
+        name: "Chris",
         initials: "AM",
         vice: "Paulo Reis"
     },
 
     "27": {
-        name: "Bruno Costa",
-        party: "Partido da Comunidade (PC)",
+        name: "Tonya",
         initials: "BC",
         vice: "Marta Lima",
         photo: "foto/27.jpg"
     },
 
     "73": {
-        name: "Carla Souza",
-        party: "Partido do Futuro (PF)",
+        name: "Julius",
         initials: "CS",
         vice: "Rui Alves"
     }
