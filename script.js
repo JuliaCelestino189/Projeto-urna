@@ -1,36 +1,31 @@
-
 const candidates = {
-    "12": {
+    "14": {
         name: "Ana Martins",
         party: "Partido Verde (PV)",
-        initials: "AM"
+        initials: "AM",
+        vice: "Paulo Reis"
     },
 
-    "23": {
+    "27": {
         name: "Bruno Costa",
         party: "Partido da Comunidade (PC)",
-        initials: "BC"
+        initials: "BC",
+        vice: "Marta Lima",
+        photo: "foto/27.jpg"
     },
 
-    "45": {
+    "73": {
         name: "Carla Souza",
         party: "Partido do Futuro (PF)",
-        initials: "CS"
+        initials: "CS",
+        vice: "Rui Alves"
     }
 };
 
-const botao = document.getElementById('1');
-
-botao.addEventListener('click', function(evento) {
-    console.log('O botão foi clicado!');
-});
-
-
-
 let votes = {
-    "12": 0,
-    "23": 0,
-    "45": 0,
+    "14": 0,
+    "27": 0,
+    "73": 0,
     branco: 0,
     nulo: 0
 };
@@ -38,16 +33,18 @@ let votes = {
 let enteredNumber = "";
 let finished = false;
 
-
 const screenContent = document.getElementById("screen-content");
 
 const candidateName = document.getElementById("candidate-name");
 const candidateParty = document.getElementById("candidate-party");
 const candidateAvatar = document.getElementById("candidate-avatar");
+const candidateVice = document.getElementById("candidate-vice");
 
 const notice = document.getElementById("notice");
 const totalVotes = document.getElementById("total-votes");
 const resultsList = document.getElementById("results-list");
+
+const dialog = document.getElementById("results-dialog");
 
 
 function showNotice(message) {
@@ -64,12 +61,16 @@ function renderScreen() {
                 Obrigado por participar!
             </p>
         `;
+        
 
         candidateName.textContent = "Voto finalizado";
+        
+
         candidateParty.textContent =
             "Sua escolha foi registrada nesta simulação.";
 
         candidateAvatar.textContent = "✓";
+        candidateVice.textContent = "";
 
         return;
     }
@@ -77,6 +78,8 @@ function renderScreen() {
     const candidate = candidates[enteredNumber];
 
     let help = "Digite o número do candidato";
+
+    candidateVice.textContent = "";
 
     if (enteredNumber === "") {
         candidateName.textContent = "Aguardando número";
@@ -87,8 +90,9 @@ function renderScreen() {
         candidateParty.textContent = "Insira o segundo dígito";
         candidateAvatar.textContent = enteredNumber;
     } else if (candidate) {
-        candidateName.textContent = candidate.name;
-        candidateParty.textContent = candidate.party;
+        candidateName.textContent = "Nome: " + candidate.name;
+        candidateParty.textContent = "Partido: " + candidate.party;
+        candidateVice.textContent = "Vice: " + candidate.vice;
         candidateAvatar.textContent = candidate.initials;
 
         help = "Confira os dados e confirme seu voto";
@@ -105,9 +109,10 @@ function renderScreen() {
     screenContent.innerHTML = `
         <p class="screen-instruction">SEU VOTO PARA</p>
 
-        <h3>PREFEITO(A)</h3>
+        <h3>Prefeito</h3>
 
         <div class="number-entry">
+            <span class="number-label">Número:</span>
             <span class="digit">
                 ${digits[0] === " " ? "" : digits[0]}
             </span>
@@ -133,6 +138,14 @@ function addDigit(digit) {
     }
 
     enteredNumber += digit;
+
+    renderScreen();
+}
+
+
+function resetVote() {
+    enteredNumber = "";
+    finished = false;
 
     renderScreen();
 }
@@ -177,6 +190,7 @@ function confirmVote() {
     }
 
     finished = true;
+    setTimeout(resetVote, 2500);
 
     renderScreen();
     renderResults();
@@ -191,6 +205,7 @@ function blankVote() {
     votes.branco++;
 
     finished = true;
+    setTimeout(resetVote, 2500);
 
     renderScreen();
     renderResults();
@@ -272,7 +287,6 @@ document.querySelectorAll("[data-digit]").forEach(button => {
     });
 });
 
-
 document
     .getElementById("correct-btn")
     .addEventListener("click", correctVote);
@@ -286,8 +300,6 @@ document
     .addEventListener("click", blankVote);
 
 
-const dialog = document.getElementById("results-dialog");
-
 document
     .getElementById("show-results-btn")
     .addEventListener("click", () => {
@@ -299,7 +311,7 @@ document
 
         const items = [
             ...Object.entries(candidates).map(([number, candidate]) => ({
-                name: ${candidate.name} (${number}),
+                name: `${candidate.name} (${number})`,
                 count: votes[number]
             })),
 
@@ -340,15 +352,21 @@ document
 
 
 document.addEventListener("keydown", event => {
+    if (dialog.open) {
+        return;
+    }
+
     if (/^[0-9]$/.test(event.key)) {
         addDigit(event.key);
     }
 
     if (event.key === "Backspace") {
+        event.preventDefault();
         correctVote();
     }
 
     if (event.key === "Enter") {
+        event.preventDefault();
         confirmVote();
     }
 });
@@ -356,4 +374,3 @@ document.addEventListener("keydown", event => {
 
 renderScreen();
 renderResults();
-```

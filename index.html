@@ -1,49 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    
-    <title>Urna Eletrônica</title> 
-    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urna Eletrônica</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script> 
-
-
 </head>
 
 <body>
-
-    <header class="topbar">
-        <a class="brand" href="#">
-            <span class="brand-mark">U</span>
-            <span>urna<span class="brand-light">.simulada</span></span>
-        </a>
-
-        <span class="topbar-label">PROJETO ACADÊMICO</span>
-    </header>
 
     <main>
 
         <section class="intro">
             <div>
                 <p class="eyebrow">SIMULADOR DE VOTAÇÃO</p>
-
-                <h1>
-                    Sua escolha,<br>
-                    <span>seu voto.</span>
-                </h1>
-
+                <h1>Seu voto!</h1>
                 <p class="intro-text">
-                    Uma urna eletrônica demonstrativa
-                    desenvolvida com HTML, CSS e JavaScript.
+                    Experimente uma votação simulada. Digite o número,
+                    confira os dados e confirme.
                 </p>
             </div>
 
-            <div class="status-pill">
-                <span class="status-dot"></span>
-                Simulação local
-            </div>
         </section>
 
         <section class="voting-layout">
@@ -55,194 +32,91 @@
                         <p class="eyebrow">ELEIÇÃO SIMULADA</p>
                         <h2>Prefeito(a)</h2>
                     </div>
-
-                    <span class="step-badge">ETAPA 01</span>
+  
                 </div>
 
-                <div class="screen">
+                <div class="urna-body">
 
-                    <div class="screen-top">
-                        <span>JUSTIÇA ELEITORAL</span>
-                        <span class="screen-indicator"></span>
-                    </div>
+                    <div class="screen">
 
-                    <div id="screen-content" class="screen-content">
-                        <p class="screen-instruction">SEU VOTO PARA</p>
-
-                        <h3>PREFEITO(A)</h3>
-
-                        <div class="number-entry">
-                            <span class="digit"></span>
-                            <span class="digit"></span>
+                        <div class="screen-top">
+                            <span>JUSTIÇA ELEITORAL</span>
+                            <span class="screen-indicator"></span>
                         </div>
 
-                        <p class="screen-help">
-                            Digite o número do candidato
-                        </p>
-                    </div>
+                        <div id="screen-content" class="screen-content"></div>
 
-                    <div class="screen-footer">
-                        <span>URNA SIMULADA</span>
-                        <span>BRASIL</span>
-                    </div>
+                        <div class="candidate-preview">
+                            <div class="candidate-avatar" id="candidate-avatar">?</div>
 
-                </div>
+                            <div class="candidate-details">
+                                <strong id="candidate-name">Aguardando número</strong>
+                                <span id="candidate-party">Digite 2 números no teclado</span>
+                                <span id="candidate-vice"></span>
+                            </div>
+                        </div>
 
-                <div class="candidate-preview">
-
-                    <div class="candidate-avatar" id="candidate-avatar">
-                        ?
-                    </div>
-
-                    <div class="candidate-details">
-                        <span class="detail-label">CANDIDATO(A)</span>
-
-                        <strong id="candidate-name">
-                            Aguardando número
-                        </strong>
-
-                        <span id="candidate-party">
-                            Digite 2 números no teclado
-                        </span>
-                    </div>
-
-                </div>
-
-                <div class="machine-bottom">
-
-                    <div class="keyboard-area">
-
-                        <p class="keyboard-label">
-                            TECLADO NUMÉRICO
-                        </p>
-
-                        <div class="keypad">
-
-                            <button class="key" data-digit="1">1</button>
-                            <button class="key" data-digit="2">2</button>
-                            <button class="key" data-digit="3">3</button>
-
-                            <button class="key" data-digit="4">4</button>
-                            <button class="key" data-digit="5">5</button>
-                            <button class="key" data-digit="6">6</button>
-
-                            <button class="key" data-digit="7">7</button>
-                            <button class="key" data-digit="8">8</button>
-                            <button class="key" data-digit="9">9</button>
-
-                            <span></span>
-                            <button class="key" data-digit="0">0</button>
-                            <span></span>
-
+                        <div class="screen-footer">
+                            <p>Aperte a tecla:</p>
+                            <p><b>CONFIRMA</b> para CONFIRMAR este voto</p>
+                            <p><b>CORRIGE</b> para REINICIAR este voto</p>
                         </div>
 
                     </div>
 
-                    <div class="action-area">
+                    <div class="machine-bottom">
 
-                        <p class="keyboard-label">
-                            CONFIRME SUA ESCOLHA
-                        </p>
+                        <div class="keyboard-area">
+                            <p class="keyboard-label">SIMULAÇÃO ELEITORAL</p>
 
-                        <button class="action-key white" id="correct-btn">
-                            CORRIGE
-                        </button>
+                            <div class="keypad">
+                                <button class="key" data-digit="1">1</button>
+                                <button class="key" data-digit="2">2</button>
+                                <button class="key" data-digit="3">3</button>
 
-                        <button class="action-key orange" id="blank-btn">
-                            BRANCO
-                        </button>
+                                <button class="key" data-digit="4">4</button>
+                                <button class="key" data-digit="5">5</button>
+                                <button class="key" data-digit="6">6</button>
 
-                        <button class="action-key green" id="confirm-btn">
-                            CONFIRMA ↵
-                        </button>
+                                <button class="key" data-digit="7">7</button>
+                                <button class="key" data-digit="8">8</button>
+                                <button class="key" data-digit="9">9</button>
+
+                                <span></span>
+                                <button class="key" data-digit="0">0</button>
+                                <span></span>
+                            </div>
+                        </div>
+
+                        <div class="action-area">
+                            <button class="action-key white" id="blank-btn">BRANCO</button>
+                            <button class="action-key orange" id="correct-btn">CORRIGE</button>
+                            <button class="action-key green" id="confirm-btn">CONFIRMA</button>
+                        </div>
 
                     </div>
 
                 </div>
-
-                <p class="machine-note">
-                    Demonstração fictícia. Não é uma urna oficial
-                    e não registra votos reais.
-                </p>
 
             </div>
 
             <aside class="side-panel">
 
-                <div class="panel-card">
-
-                    <p class="eyebrow">COMO VOTAR</p>
-
-                    <h3>É simples assim.</h3>
-
-                    <ol class="steps">
-
-                        <li>
-                            <span>1</span>
-
-                            <div>
-                                <strong>Digite o número</strong>
-
-                                <p>
-                                    Use o teclado para inserir
-                                    os dois dígitos.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <span>2</span>
-
-                            <div>
-                                <strong>Confira a tela</strong>
-
-                                <p>
-                                    Veja o nome e o partido fictício
-                                    do candidato.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <span>3</span>
-
-                            <div>
-                                <strong>Confirme o voto</strong>
-
-                                <p>
-                                    Pressione CONFIRMA para
-                                    registrar seu voto.
-                                </p>
-                            </div>
-                        </li>
-
-                    </ol>
-
-                </div>
 
                 <div class="panel-card results-card">
-
                     <div class="results-heading">
-
                         <div>
                             <p class="eyebrow">PARCIAL DA SIMULAÇÃO</p>
                             <h3>Votos registrados</h3>
                         </div>
-
                         <span class="vote-count" id="total-votes">0</span>
-
                     </div>
 
                     <div id="results-list" class="results-list">
-                        <p class="empty-results">
-                            Os votos aparecerão aqui após a confirmação.
-                        </p>
+                        <p class="empty-results">Os votos aparecerão aqui após a confirmação.</p>
                     </div>
 
-                    <button id="show-results-btn" class="text-button">
-                        Ver resumo da votação ↗
-                    </button>
-
+                    <button id="show-results-btn" class="text-button">Ver resumo da votação ↗</button>
                 </div>
 
             </aside>
@@ -251,7 +125,6 @@
 
         <section class="notice" id="notice" role="status">
             <span class="notice-icon">i</span>
-
             <p>
                 Esta página é apenas um projeto educacional.
                 Os candidatos, partidos e resultados são fictícios.
@@ -261,36 +134,25 @@
     </main>
 
     <footer>
-        <span>URNA.SIMULADA</span>
-
-        <span>
-            Projeto educacional · HTML + CSS + JavaScript
-        </span>
+       
+        <span>Projeto educacional · HTML + CSS + JavaScript</span>
     </footer>
 
     <dialog id="results-dialog" class="results-dialog">
-
         <div class="dialog-heading">
-
             <div>
                 <p class="eyebrow">RESULTADO DA SESSÃO</p>
                 <h2>Resumo da votação</h2>
             </div>
-
-            <button id="close-dialog" class="close-button">
-                ×
-            </button>
-
+            <button id="close-dialog" class="close-button">×</button>
         </div>
 
         <div id="dialog-results"></div>
 
-        <p class="dialog-note">
-            Resultados fictícios desta demonstração.
-            Atualize a página para reiniciar a votação.
-        </p>
-
+ 
     </dialog>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
