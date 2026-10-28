@@ -1,23 +1,24 @@
 const candidates = {
     "14": {
         name: "Chris",
-        initials: "AM",
-        vice: "Paulo Reis"
+        initials: "CS",
+        vice: "Greg"
     },
 
     "27": {
         name: "Tonya",
-        initials: "BC",
-        vice: "Marta Lima",
+        initials: "TA",
+        vice: "rochelle",
         photo: "foto/27.jpg"
     },
 
     "73": {
         name: "Julius",
-        initials: "CS",
-        vice: "Rui Alves"
+        initials: "JS",
+        vice: "Drew"
     }
 };
+
 
 let votes = {
     "14": 0,
